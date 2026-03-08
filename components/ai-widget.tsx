@@ -14,6 +14,7 @@ import { useEffect, useRef, useState } from "react";
 import ChatBubble from "./chat-bubble";
 
 const AiWidget = () => {
+
   const [responses, setResponses] = useState<ChatBubbleProps[]>([
     {
       sender: SenderType.AI,
@@ -21,10 +22,13 @@ const AiWidget = () => {
     },
   ]);
 
+  const [inputEnabled,  setInputEnabled] = useState(true);
   const [prompt, setPrompt] = useState<ChatBubbleProps>({
     sender: SenderType.User,
     message: "",
   });
+
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const history = getChatHistory();
@@ -112,6 +116,7 @@ const AiWidget = () => {
               key={index}
               saveMessage={saveResponse}
               index={index}
+              animationComplete={(status: boolean)=> setInputEnabled(status)}
               isSaved={response.isSaved}
               message={response.message}
               sender={response.sender}
@@ -120,13 +125,16 @@ const AiWidget = () => {
         </motion.div>
         <div className="flex gap-2 items-center mt-3">
           <Input
+            disabled = { !inputEnabled }
             required
             className="bg-[#191919] dark:bg-[#191919] h-10"
-            placeholder="Ask anything!"
+            placeholder={inputEnabled ? "Ask anything!" : "Ai is typing..."}
             type="text"
+            ref={inputRef}
             value={prompt.message}
             onKeyDown={(e) => {
               if (e.key === "Enter" && prompt.message.trim() !== "") {
+                inputRef.current?.blur();
                 handleSubmit();
               }
             }}
