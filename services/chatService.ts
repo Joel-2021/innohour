@@ -48,6 +48,11 @@ const mockResponses: MockResponse[] = [
   },
 ];
 
+/**
+ * This function takes a prompt and returns a response from the mockResponses array.
+ * @param {string} input : Input prompted by the user
+ * @returns {ChatBubbleProps}
+ */
 export const getChatResponse = (input: string): ChatBubbleProps => {
   const text = input.trim().toLowerCase();
 
@@ -70,6 +75,10 @@ export const getChatResponse = (input: string): ChatBubbleProps => {
 };
 
 
+/**
+ * This function gets the save chat history from the local storage.
+ * @returns {ChatBubbleProps[] | null}
+ */
 export const getChatHistory = (): ChatBubbleProps[] | null => {
   try {
     const savedHistory = localStorage.getItem("chat-history");
@@ -85,6 +94,11 @@ export const getChatHistory = (): ChatBubbleProps[] | null => {
   }
 };
 
+/**
+ * This function saves the chat history in the local storage.
+ * @param {ChatBubbleProps[]} chatResponses
+ * @returns {void}
+ */
 export const setChatHistory = (chatResponses: ChatBubbleProps[]): void => {
 
     const stringifyResponses = JSON.stringify(chatResponses);

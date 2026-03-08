@@ -1,9 +1,8 @@
 "use client"
 
-import React, { ReactHTMLElement } from 'react'
 import { Button } from './ui/button'
 import { Container } from './ui/container'
-import { motion, spring } from 'motion/react'
+import { motion } from 'motion/react'
 
 export const HeroSection = () => {
 

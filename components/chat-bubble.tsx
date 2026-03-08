@@ -35,7 +35,7 @@ const ChatBubble = ({ sender, message, index, isSaved, saveMessage }: ChatBubble
                         ))}
                     </div>
                 </div>
-                <Button variant={'ghost'} className='cursor-pointer' onClick={(e) => saveMessage && saveMessage(index)}>
+                <Button aria-label='save' variant={'ghost'} className='cursor-pointer' onClick={(e) => saveMessage && saveMessage(index)}>
                     <Star fill={isSaved ? '#fff' : 'transparent'} className='hidden group-hover:block' size={15} />
                 </Button>
             </div>

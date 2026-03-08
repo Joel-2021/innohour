@@ -1,10 +1,10 @@
 "use client";
 
 import { Container } from "./ui/container";
+import { motion } from "motion/react";
+import clock from "../public/lottie/clock.json";
 import Image from "next/image";
 import Lottie from "lottie-react";
-import clock from "../public/lottie/clock.json";
-import { motion } from "motion/react";
 
 const HowItWorks = () => {
   return (
@@ -33,7 +33,7 @@ const HowItWorks = () => {
           >
             <div className="flex flex-col gap-5 mt-12">
               <div className="relative flex flex-col gap-5 ps-12">
-                <motion.h5
+                <motion.h3
                   initial={{
                     filter: "blur(10px)",
                     opacity: 0,
@@ -52,7 +52,7 @@ const HowItWorks = () => {
                   className="absolute -left-18.75 top-1/2 -translate-y-1/2 text-6xl font-extrabold text-white/7 rotate-270"
                 >
                   Call 01
-                </motion.h5>
+                </motion.h3>
                 <motion.div
                   initial={{
                     y: -30,
@@ -78,7 +78,7 @@ const HowItWorks = () => {
                     height={50}
                   />
                   <div className="w-[40%]">
-                    <h5 className="font-bold text-lg mb-2">Book Your Spot</h5>
+                    <h4 className="font-bold text-lg mb-2">Book Your Spot</h4>
                     <p className="text-xs">
                       Pick a time that fits your schedule. Booking takes less
                       than a minute.
@@ -111,9 +111,9 @@ const HowItWorks = () => {
                     height={50}
                   />
                   <div className="w-[40%]">
-                    <h5 className="font-bold text-lg mb-2">
+                    <h4 className="font-bold text-lg mb-2">
                       Tell Us Your Story
-                    </h5>
+                    </h4>
                     <p className="text-xs">
                       In the first 30-minute call, we’ll listen to your goals,
                       challenges, and how your business operates.
@@ -123,7 +123,7 @@ const HowItWorks = () => {
               </div>
 
               <div className="relative flex flex-col gap-5 ps-12">
-                <motion.h5
+                <motion.h3
                   initial={{
                     filter: "blur(10px)",
                     opacity: 0,
@@ -142,7 +142,7 @@ const HowItWorks = () => {
                   className="absolute -left-18.75 top-1/2 -translate-y-1/2 text-6xl font-extrabold text-white/7 rotate-270"
                 >
                   Call 02
-                </motion.h5>
+                </motion.h3>
 
                 <motion.div
                   initial={{
@@ -169,9 +169,9 @@ const HowItWorks = () => {
                     height={50}
                   />
                   <div className="w-[40%]">
-                    <h5 className="font-bold text-lg mb-2">
+                    <h4 className="font-bold text-lg mb-2">
                       Get Practical Insights
-                    </h5>
+                    </h4>
                     <p className="text-xs">
                       In the second 30-minute call, we’ll share practical,
                       easy-to-understand ideas that can help you save time and
@@ -205,9 +205,9 @@ const HowItWorks = () => {
                     height={50}
                   />
                   <div className="w-[40%]">
-                    <h5 className="font-bold text-lg mb-2">
+                    <h4 className="font-bold text-lg mb-2">
                       Your Innovation Roadmap
-                    </h5>
+                    </h4>
                     <p className="text-xs">
                       Within 48 hours, you’ll get a personalized roadmap with
                       clear next steps tailored to your business.
@@ -247,7 +247,7 @@ const HowItWorks = () => {
         <div className="md:hidden block">
           <div className="flex flex-col gap-5 mt-5">
             <div className="relative flex flex-col gap-5 ps-5">
-              <motion.h5
+              <motion.h3
                 initial={{
                   filter: "blur(10px)",
                   opacity: 0,
@@ -266,7 +266,7 @@ const HowItWorks = () => {
                 className="absolute left-0 top-30 -translate-x-1/2 -translate-y-1/2 text-3xl font-extrabold text-white/7 rotate-270"
               >
                 Call 01
-              </motion.h5>
+              </motion.h3>
               <motion.div
                 initial={{
                   y: -30,
@@ -292,7 +292,7 @@ const HowItWorks = () => {
                   height={50}
                 />
                 <div>
-                  <h5 className="font-bold text-lg mb-2">Book Your Spot</h5>
+                  <h4 className="font-bold text-lg mb-2">Book Your Spot</h4>
                   <p className="text-xs">
                     Pick a time that fits your schedule. Booking takes less than
                     a minute.
@@ -325,7 +325,7 @@ const HowItWorks = () => {
                   height={50}
                 />
                 <div>
-                  <h5 className="font-bold text-lg mb-2">Tell Us Your Story</h5>
+                  <h4 className="font-bold text-lg mb-2">Tell Us Your Story</h4>
                   <p className="text-xs">
                     In the first 30-minute call, we’ll listen to your goals,
                     challenges, and how your business operates.
@@ -335,7 +335,7 @@ const HowItWorks = () => {
             </div>
 
             <div className="relative flex flex-col gap-5 ps-5">
-              <motion.h5
+              <motion.h3
                 initial={{
                   filter: "blur(10px)",
                   opacity: 0,
@@ -354,7 +354,7 @@ const HowItWorks = () => {
                 className="absolute left-0 top-30 -translate-x-1/2 -translate-y-1/2 text-3xl font-extrabold text-white/7 rotate-270"
               >
                 Call 02
-              </motion.h5>
+              </motion.h3>
 
               <motion.div
                 initial={{
@@ -381,9 +381,9 @@ const HowItWorks = () => {
                   height={50}
                 />
                 <div>
-                  <h5 className="font-bold text-lg mb-2">
+                  <h4 className="font-bold text-lg mb-2">
                     Get Practical Insights
-                  </h5>
+                  </h4>
                   <p className="text-xs">
                     In the second 30-minute call, we’ll share practical,
                     easy-to-understand ideas that can help you save time and
@@ -417,9 +417,9 @@ const HowItWorks = () => {
                   height={50}
                 />
                 <div>
-                  <h5 className="font-bold text-lg mb-2">
+                  <h4 className="font-bold text-lg mb-2">
                     Your Innovation Roadmap
-                  </h5>
+                  </h4>
                   <p className="text-xs">
                     Within 48 hours, you’ll get a personalized roadmap with
                     clear next steps tailored to your business.
