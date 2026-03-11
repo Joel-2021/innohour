@@ -105,7 +105,6 @@ const AiWidget = () => {
         <motion.div
           id="scroll-container"
           ref={scrollRef}
-          layout
           variants={container}
           initial="hidden"
           animate="show"

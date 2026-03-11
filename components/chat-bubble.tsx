@@ -15,7 +15,7 @@ const ChatBubble = ({ sender, message, index, isSaved, saveMessage, animationCom
     const isUser = sender === SenderType.User;
 
     return (
-        <motion.div layout
+        <motion.div
             variants={bubble} transition={{ duration: 0.25 }} className={cn('flex gap-4 items-start mb-3', isUser ? 'flex-row-reverse' : '')}>
             <div className={cn("rounded-full shrink-0 size-10", isUser ? 'bg-linear-to-b from-[#06b6d4] via-[#2563eb] to-[#6366f1]' : ' bg-linear-to-r from-[#fda4af]  to-[#f43f5e]')}></div>
             <div className={cn('group flex gap-1 items-start', isUser ? 'flex-row-reverse' : '')}>
