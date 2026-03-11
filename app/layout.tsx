@@ -3,7 +3,7 @@ import { Heebo } from "next/font/google";
 import "./globals.css";
 
 const heeboSans = Heebo({
-  variable: "--font-geist-sans",
+  variable: "--font-heebo",
   subsets: ["latin"],
 });
 

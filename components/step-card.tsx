@@ -9,7 +9,7 @@ export function StepCard({ icon, title, text, delay,className, width }: { icon: 
       transition={{ duration: 0.4, delay }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className={cn("bg-[#1B1C1E] flex items-center md:gap-5 gap-3 rounded-xl text-start md:p-8 p-5", className)}
+      className={cn("bg-[#1B1C1E] flex items-center md:gap-6 gap-3 rounded-xl text-start md:p-8 p-5", className)}
     >
       <Image src={icon} alt="icon" width={40} height={40} />
 

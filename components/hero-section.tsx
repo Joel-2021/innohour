@@ -14,13 +14,13 @@ export const HeroSection = () => {
   }
 
   return (
-    <div className="relative">
+    <div className="relative md:mb-15">
       <div className="absolute inset-0 -top-100 -z-10 
         bg-radial-[circle_at_100%_50%] 
             from-[#00E3FB]/15 via-transparent via-30% to-transparent to-100%">
       </div>
       <div className="absolute inset-0 -z-10
-bg-linear-to-b from-transparent from-40% via-primary/10 via-80% to-transparent">
+bg-linear-to-b from-transparent from-40% via-primary/15 via-80% to-transparent">
       </div>
       <Container className='py-60 px-5 flex flex-col justify-center items-center gap-6 text-center'>
 

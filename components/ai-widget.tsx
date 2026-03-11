@@ -88,7 +88,7 @@ const AiWidget = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.4 }}
         viewport={{ once: true }}
-        className="md:text-5xl text-4xl leading-normal text-transparent bg-clip-text font-bold bg-linear-to-r from-[#00E5FC] to-primary"
+        className="md:text-5xl text-4xl leading-normal tracking-normal text-transparent bg-clip-text font-bold bg-linear-to-r from-[#00E5FC] to-primary"
       >
         Ask me anything about{" "}
         <span className="bg-linear-to-r from-[#CACACA] to-[#878787] bg-clip-text">
