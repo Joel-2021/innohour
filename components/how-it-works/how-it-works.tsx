@@ -79,28 +79,27 @@ const HowItWorks = () => {
             </CallSection>
           </div>
 
-          <div className="absolute md:w-[50%] lg:w-[58%] h-[110%] flex items-center justify-end top-1/2 md:translate-x-[5%] -right-2.5 -translate-y-1/2">
-            <motion.div
-              initial={{
-                x: 30,
-                opacity: 0,
-              }}
-              transition={{
-                duration: 0.8,
-                type: "spring",
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              className="rounded-tl-full rounded-bl-full h-full flex justify-center items-center bg-[#222627]"
-            >
-              <Lottie animationData={clock} loop={true} />
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{
+              x: 30,
+              opacity: 0,
+            }}
+            transition={{
+              duration: 0.8,
+              type: "spring",
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            className="rounded-tl-full rounded-bl-full absolute md:w-[50%] lg:w-[58%] h-[110%] flex items-center justify-end top-1/2 md:translate-x-[5%] -right-2.5 -translate-y-1/2 bg-[#222627]"
+          >
+            <Lottie animationData={clock} loop={true} />
+          </motion.div>
+
         </div>
 
         <div className="md:hidden block mb-6">
