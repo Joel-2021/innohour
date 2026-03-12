@@ -8,6 +8,8 @@ export type ChatBubbleProps = {
     message: string,
     index?: number,
     isSaved?: boolean,
-    saveMessage?: Function,
-    animationComplete?: Function
+    saveMessage?: (index: number) => void,
+    animationComplete?: (status: boolean) => void,
+    animate?: boolean,
+    loading?: boolean
 }

@@ -4,8 +4,10 @@ import { ChatBubbleProps, SenderType } from '@/models/chat-bubble.model'
 import { Star } from 'lucide-react'
 import { motion } from 'motion/react'
 import { Button } from '../ui/button'
+import Loader from './loader'
+import TextGenerate from './text-generate'
 
-const ChatBubble = ({ sender, message, index, isSaved, saveMessage, animationComplete }: ChatBubbleProps) => {
+const ChatBubble = ({ sender, message, index, isSaved, saveMessage, animationComplete, animate, loading }: ChatBubbleProps) => {
 
     const isUser = sender === SenderType.User;
 
@@ -15,31 +17,15 @@ const ChatBubble = ({ sender, message, index, isSaved, saveMessage, animationCom
             <div className={cn('group flex gap-1 items-start', isUser ? 'flex-row-reverse' : '')}>
                 <div className={cn('relative rounded-xl p-0.5', isSaved && 'animated-border')}>
                     <div className='bg-[#191919] h-full w-full py-2 px-3 md:text-lg text-base rounded-lg max-w-sm text-start z-10'>
-                        {message.split(' ').map((word, i, arr) => (
-                            <motion.span
-                                onAnimationComplete={() => {
-                                    if (i === arr.length - 1) {
-                                        animationComplete?.(true);
-                                    }else {
-                                        animationComplete?.(false);
-                                    }
-                                }}
-                                key={i}
-                                initial={{ opacity: 0, filter: "blur(10px)" }}
-                                animate={{ opacity: 1, filter: "blur(0px)" }}
-                                transition={{
-                                    delay: i * 0.2,
-                                    duration: 0.2
-                                }}
-                            >
-                                {word}{" "}
-                            </motion.span>
-                        ))}
+                        {loading ? <Loader text="Thinking..." /> :
+                            <TextGenerate animate={animate} message={message} animationComplete={animationComplete} />}
                     </div>
                 </div>
-                <Button aria-label='save' variant={'ghost'} className='cursor-pointer' onClick={(e) => saveMessage && saveMessage(index)}>
-                    <Star fill={isSaved ? '#fff' : 'transparent'} className='hidden group-hover:block' size={15} />
-                </Button>
+                {
+                    !loading && <Button aria-label='save' variant={'ghost'} className='cursor-pointer' onClick={(e) => saveMessage && index !== undefined && saveMessage(index)}>
+                        <Star fill={isSaved ? '#fff' : 'transparent'} className='hidden group-hover:block' size={15} />
+                    </Button>
+                }
             </div>
         </motion.div>
     )

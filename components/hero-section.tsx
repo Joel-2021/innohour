@@ -8,9 +8,9 @@ export const HeroSection = () => {
 
   const scrollToAiWidget = () => {
 
-    const aiWidget = document.getElementsByClassName('ai-widget')[0];
+    const aiWidget = document.getElementById('ai-widget');
 
-    aiWidget.scrollIntoView({ behavior: "smooth" })
+    aiWidget?.scrollIntoView({ behavior: "smooth" })
   }
 
   return (

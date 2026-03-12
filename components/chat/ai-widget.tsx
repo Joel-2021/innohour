@@ -19,13 +19,16 @@ const AiWidget = () => {
     {
       sender: SenderType.AI,
       message: "Hi! How may i help you",
+      animate: true,
     },
   ]);
 
-  const [inputEnabled,  setInputEnabled] = useState(true);
+  const [inputEnabled, setInputEnabled] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [prompt, setPrompt] = useState<ChatBubbleProps>({
     sender: SenderType.User,
     message: "",
+    animate: true,
   });
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -35,7 +38,10 @@ const AiWidget = () => {
   useEffect(() => {
     const history = getChatHistory();
 
-    if (history) setResponses(history);
+    if (history) setResponses(history.map((msg) => ({
+      ...msg,
+      animate: false
+    })));
   }, []);
 
 
@@ -46,19 +52,31 @@ const AiWidget = () => {
       behavior: "smooth",
     });
     setChatHistory(responses);
+
   }, [responses]);
-  
+
 
   /**
    * Updates the response state and resets the input field
    * @returns {void}
    */
-  const handleSubmit = (): void => {
+  const handleSubmit = async (): Promise<void> => {
 
     setResponses((prev) => [...prev, prompt]);
-    const response = getChatResponse(prompt.message);
     setPrompt((prev) => ({ ...prev, message: "" }));
 
+    // const loadingBubble: ChatBubbleProps = {
+    //   sender: SenderType.AI,
+    //   message: "",
+    //   loading: true
+    // };
+
+    setLoading(true);
+    // setResponses((prev) => [...prev, loadingBubble]);
+
+    const response = await getChatResponse(prompt.message);
+
+    setLoading(false);
     setResponses((prev) => [...prev, response]);
   };
 
@@ -76,15 +94,14 @@ const AiWidget = () => {
   };
 
   return (
-    <Container className="text-center my-30 ai-widget">
+    <Container className="text-center my-30" id="ai-widget">
       <motion.h2
         initial={{ opacity: 0, y: -50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.4 }}
         viewport={{ once: true }}
         className="md:text-5xl text-4xl leading-normal tracking-normal text-transparent bg-clip-text font-bold bg-linear-to-r from-[#00E5FC] to-primary"
-      >
-        Ask me anything about{" "}
+      >Ask me anything about{" "}
         <span className="bg-linear-to-r from-[#CACACA] to-[#878787] bg-clip-text">
           InnoHour!
         </span>
@@ -106,16 +123,23 @@ const AiWidget = () => {
               key={index}
               saveMessage={saveResponse}
               index={index}
-              animationComplete={(status: boolean)=> setInputEnabled(status)}
-              isSaved={response.isSaved}
-              message={response.message}
-              sender={response.sender}
+              animationComplete={(status: boolean) => setInputEnabled(status)}
+              {...response}
             />
           ))}
+
+          {
+            loading && <ChatBubble
+              loading={loading}
+              sender={SenderType.AI}
+              message=""
+            />
+          }
+
         </motion.div>
         <div className="flex gap-2 items-center mt-3">
           <Input
-            disabled = { !inputEnabled }
+            disabled={!inputEnabled}
             required
             className="bg-[#191919] dark:bg-[#191919] h-10"
             placeholder={inputEnabled ? "Ask anything!" : "Ai is typing..."}

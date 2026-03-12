@@ -64,7 +64,7 @@ const HowItWorks = () => {
           Works
         </motion.h2>
 
-        <div className="mt-12 mb-4 relative md:block hidden overflow-hidden">
+        <div className="mt-12 mb-4 relative overflow-hidden">
           <div className="flex flex-col gap-5">
             <CallSection label="Call 01">
               {call01.map((step, i) => (
@@ -77,6 +77,12 @@ const HowItWorks = () => {
                 <StepCard key={i} {...step} />
               ))}
             </CallSection>
+
+            {/* <CallSection label="Call 03">
+              {call02.map((step, i) => (
+                <StepCard key={i} {...step} />
+              ))}
+            </CallSection> */}
           </div>
 
           <motion.div
@@ -95,27 +101,10 @@ const HowItWorks = () => {
             viewport={{
               once: true,
             }}
-            className="rounded-tl-full rounded-bl-full absolute md:w-[50%] lg:w-[58%] h-[110%] flex items-center justify-end top-1/2 md:translate-x-[5%] -right-2.5 -translate-y-1/2 bg-[#222627]"
+            className="md:flex hidden rounded-tl-full rounded-bl-full absolute md:w-[50%] lg:w-[58%] h-[110%] items-center justify-end top-1/2 md:translate-x-[5%] -right-2.5 -translate-y-1/2 bg-[#222627]"
           >
             <Lottie animationData={clock} loop={true} />
           </motion.div>
-
-        </div>
-
-        <div className="md:hidden block mb-6">
-          <div className="flex flex-col gap-5 mt-5">
-            <CallSection label="Call 01">
-              {call01.map((step, i) => (
-                <StepCard key={i} {...step} />
-              ))}
-            </CallSection>
-
-            <CallSection label="Call 02">
-              {call02.map((step, i) => (
-                <StepCard key={i} {...step} />
-              ))}
-            </CallSection>
-          </div>
         </div>
       </div>
     </Container>

@@ -1,4 +1,5 @@
-export type ContainerProps = {
-  className?: string,
-  children?: React.ReactNode
+import { HTMLAttributes, ReactNode } from "react"
+
+export type ContainerProps = HTMLAttributes<HTMLDivElement> & {
+  children?: ReactNode
 }

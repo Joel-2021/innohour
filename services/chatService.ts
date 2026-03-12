@@ -53,27 +53,32 @@ const mockResponses: MockResponse[] = [
  * @param {string} input : Input prompted by the user
  * @returns {ChatBubbleProps}
  */
-export const getChatResponse = (input: string): ChatBubbleProps => {
+export const getChatResponse = async (
+  input: string,
+): Promise<ChatBubbleProps> => {
   const text = input.trim().toLowerCase();
 
   const match = mockResponses.find((item) =>
     item.keywords.some((keyword) => text.includes(keyword)),
   );
 
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   if (match) {
     const randomIndex = Math.floor(Math.random() * match.responses.length);
     return {
       message: match.responses[randomIndex],
       sender: SenderType.AI,
+      animate: true,
     };
   }
 
   return {
     message: "I'm not sure about that yet, but I'm learning!",
     sender: SenderType.AI,
+    animate: true,
   };
 };
-
 
 /**
  * This function gets the save chat history from the local storage.
@@ -100,7 +105,10 @@ export const getChatHistory = (): ChatBubbleProps[] | null => {
  * @returns {void}
  */
 export const setChatHistory = (chatResponses: ChatBubbleProps[]): void => {
+  const filteredResponses = chatResponses.filter(
+    (response) => response.loading !== true,
+  );
 
-    const stringifyResponses = JSON.stringify(chatResponses);
-    localStorage.setItem('chat-history', stringifyResponses);
-}
+  const stringifyResponses = JSON.stringify(chatResponses);
+  localStorage.setItem("chat-history", stringifyResponses);
+};
