@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 
-export function StepCard({ icon, title, text, delay,className, width }: { icon: string; title: string; text: string; delay: number; className?: string; width: string }) {
+export function StepCard({ icon, title, text, delay, className, width }: { icon: string; title: string; text: string; delay: number; className?: string; width: string }) {
   return (
     <motion.div
       initial={{ y: -30, opacity: 0 }}

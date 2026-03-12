@@ -1,9 +1,9 @@
 "use client";
 
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { ChatBubbleProps, SenderType } from "@/models/chat-bubble.model";
-import { Container } from "./ui/container";
-import { Input } from "./ui/input";
+import { Container } from "../ui/container";
+import { Input } from "../ui/input";
 import { motion } from "motion/react";
 import {
   getChatHistory,
@@ -30,19 +30,31 @@ const AiWidget = () => {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const history = getChatHistory();
 
     if (history) setResponses(history);
   }, []);
 
-  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    //Scrolls to the bottom of the chat widget
+    scrollRef?.current?.scrollTo({
+      top: scrollRef?.current.scrollHeight,
+      behavior: "smooth",
+    });
+    setChatHistory(responses);
+  }, [responses]);
+  
 
   /**
    * Updates the response state and resets the input field
    * @returns {void}
    */
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
+
     setResponses((prev) => [...prev, prompt]);
     const response = getChatResponse(prompt.message);
     setPrompt((prev) => ({ ...prev, message: "" }));
@@ -62,24 +74,6 @@ const AiWidget = () => {
       ),
     );
   };
-
-  const container = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.08,
-      },
-    },
-  };
-
-  useEffect(() => {
-    //Scrolls to the bottom of the chat widget
-    scrollRef?.current?.scrollTo({
-      top: scrollRef?.current.scrollHeight,
-      behavior: "smooth",
-    });
-    setChatHistory(responses);
-  }, [responses]);
 
   return (
     <Container className="text-center my-30 ai-widget">
@@ -105,9 +99,6 @@ const AiWidget = () => {
         <motion.div
           id="scroll-container"
           ref={scrollRef}
-          variants={container}
-          initial="hidden"
-          animate="show"
           className="flex-1 flex flex-col min-h-0 no-scrollbar overflow-y-scroll"
         >
           {responses.map((response, index) => (

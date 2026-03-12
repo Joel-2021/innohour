@@ -1,9 +1,8 @@
 "use client";
 
-import { Container } from "./ui/container";
+import { Container } from "../ui/container";
 import { motion } from "motion/react";
-import clock from "../public/lottie/clock.json";
-import Image from "next/image";
+import clock from "../../public/lottie/clock.json";
 import Lottie from "lottie-react";
 import { CallSection } from "./call-section";
 import { StepCard } from "./step-card";
@@ -80,7 +79,7 @@ const HowItWorks = () => {
             </CallSection>
           </div>
 
-          <div className="absolute w-[58%] h-[110%] flex items-center justify-end top-1/2 md:translate-x-[5%] -right-2.5 -translate-y-1/2">
+          <div className="absolute md:w-[50%] lg:w-[58%] h-[110%] flex items-center justify-end top-1/2 md:translate-x-[5%] -right-2.5 -translate-y-1/2">
             <motion.div
               initial={{
                 x: 30,
@@ -97,7 +96,7 @@ const HowItWorks = () => {
               viewport={{
                 once: true,
               }}
-              className="rounded-tl-full rounded-bl-full h-full flex justify-center items-center lg:bg-[radial-gradient(100%_100%_at_50%,#222627_63%,transparent_61%)] md:bg-[radial-gradient(80%_75%_at_59%,#222627_63%,transparent_61%)]"
+              className="rounded-tl-full rounded-bl-full h-full flex justify-center items-center bg-[#222627]"
             >
               <Lottie animationData={clock} loop={true} />
             </motion.div>

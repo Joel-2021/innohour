@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Heebo } from "next/font/google";
 import "./globals.css";
 
+
 const heeboSans = Heebo({
   variable: "--font-heebo",
   subsets: ["latin"],

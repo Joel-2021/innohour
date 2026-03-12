@@ -1,7 +1,7 @@
 import { HeroSection } from "@/components/hero-section";
-import AiWidget from "@/components/ai-widget";
+import AiWidget from "@/components/chat/ai-widget";
 import Footer from "@/components/footer";
-import HowItWorks from "@/components/how-it-works";
+import HowItWorks from "@/components/how-it-works/how-it-works";
 
 
 export default function Home() {
